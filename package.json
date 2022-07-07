@@ -48,7 +48,7 @@
     "eslint-config-prettier": "8.5.0",
     "gh-pages": "3.2.3",
     "husky": "8.0.1",
-    "lerna": "4.0.0",
+    "lerna": "5.1.8",
     "markdown-toc": "1.2.0",
     "prettier": "2.7.1",
     "pretty-quick": "3.1.3",
