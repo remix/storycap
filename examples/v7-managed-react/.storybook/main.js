@@ -10,6 +10,18 @@ module.exports = {
     name: '@storybook/react-webpack5',
     options: {}
   },
+  webpackFinal: async (config) => {
+    return {
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config.resolve.alias,
+          storycap: '@remix/storycap',
+        }
+      }
+    };
+  },
   docs: {
     autodocs: true
   }

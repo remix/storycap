@@ -1,4 +1,8 @@
-import { withScreenshot } from 'storycap';
+// Annoyingly, this file is occasionally run without webpack (e.g. when
+// calling `react-scripts test --setupFiles ./setupFile.js`), which
+// prevents us from relying on our Webpack config to alias the
+// 'storycap' module to our custom '@remix/storycap' module.
+import { withScreenshot } from '@remix/storycap';
 
 export const decorators = [
   withScreenshot,
