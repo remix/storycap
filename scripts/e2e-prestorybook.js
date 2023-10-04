@@ -33,19 +33,19 @@ async function main() {
   }
   const prjDir = path.resolve(__dirname, '../packages/storycap');
   const cwd = process.cwd();
-  const dist = path.resolve(cwd, target, 'node_modules/storycap');
+  const dist = path.resolve(cwd, target, 'node_modules/@remix/storycap');
   if (prjDir === dist) {
-    console.error(`target dir shold not be "${prjDir}".`);
+    console.error(`target dir should not be "${prjDir}".`);
     return 1;
   }
   rimraf.sync(dist);
   mkdirp.sync(dist);
   copyDir.sync(`${path.join(prjDir, 'lib')}`, path.join(dist, 'lib'), {});
   await cpy(['package.json', 'register.js'], dist, { cwd: prjDir });
-  rimraf.sync(path.resolve(dist, '../.bin/storycap'));
-  mkdirp(path.resolve(dist, '../.bin'));
-  fs.symlinkSync(path.resolve(prjDir, 'lib/node/cli.js'), path.resolve(dist, '../.bin/storycap'));
-  fs.chmodSync(path.resolve(dist, '../.bin/storycap'), 0o775);
+  rimraf.sync(path.resolve(dist, '../../.bin/storycap'));
+  mkdirp(path.resolve(dist, '../../.bin'));
+  fs.symlinkSync(path.resolve(prjDir, 'lib/node/cli.js'), path.resolve(dist, '../../.bin/storycap'));
+  fs.chmodSync(path.resolve(dist, '../../.bin/storycap'), 0o775);
   return 0;
 }
 
