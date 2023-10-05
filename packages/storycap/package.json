@@ -1,6 +1,6 @@
 {
   "name": "@remix/storycap",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A Storybook addon, Save the screenshot image of your stories! via puppeteer.",
   "engines": {
     "node": ">=14.13"
@@ -13,6 +13,8 @@
       "browser": "./lib-esm/index.js",
       "default": "./lib/index.js"
     },
+    "./lib/client/*": "./lib/client/*",
+    "./lib/shared/*": "./lib/shared/*",
     "./register": "./register.js"
   },
   "sideEffects": [
