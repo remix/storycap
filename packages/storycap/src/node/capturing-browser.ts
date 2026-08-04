@@ -135,8 +135,11 @@ export class CapturingBrowser extends StoryPreviewBrowser {
     if (screenshotOptions.focus) {
       await this.page.$eval(screenshotOptions.focus, (e: unknown) => (e as HTMLElement)?.blur());
     }
-    await this.page.mouse.move(0, 0);
-    await this.page.mouse.click(0, 0);
+    // Park the cursor outside the page rather than clicking at 0,0. Stories render at the
+    // top-left, and Chromium re-derives :hover (and fires mouseenter) as later stories on this
+    // long-lived page lay out under a stationary in-page cursor, so a 0,0 park leaks phantom
+    // hover state into every subsequent story. An off-page cursor hovers nothing.
+    await this.page.mouse.move(-10, -10);
 
     await this.setCurrentStory(story, { forceRerender: true });
     this.touched = false;
